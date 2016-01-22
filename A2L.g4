@@ -35,68 +35,81 @@ version
 project // one project presents one or more modules, one module is one ECU.
 
 :
-	'/begin PROJECT' ID STRING header module+ '/end PROJECT'
+	'/begin PROJECT' ID STRING 
+		header 
+		module+ 
+	'/end PROJECT'
 ;
 
 header
 :
-	'/begin HEADER' ID? STRING 'VERSION' STRING 'PROJECT_NO' ID '/end HEADER'
+	'/begin HEADER' ID? STRING 
+		'VERSION' STRING 
+		'PROJECT_NO' ID 
+	'/end HEADER'
 ;
 
 module // one module is one ECU
 
 :
 	'/begin MODULE' ID? STRING
-	(
-		a2ml
-	)? // a2ml part describes the communication protocols, it could be included by command include.
-	mod_par '/end MODULE'
+		(a2ml)? // a2ml part describes the communication protocols, it could be included by command include.
+		mod_par 
+	'/end MODULE'
 ;
 
 a2ml
 :
-	'/begin A2ML' CHAR* '/end A2ML'
+	'/begin A2ML' 
+		CHAR* 
+	'/end A2ML'
 ;
 
 mod_par // ECU parameter
 
 :
-	'/begin MOD_PAR' STRING 'VERSION' STRING 'ADDR_EPK' HEX 'EPK' STRING
-	'CUSTOMER_NO' STRING 'USER' STRING 'PHONE_NO' STRING 'ECU' STRING 'CPU_TYPE'
-	STRING
-	(
-		memory_segment
-	)*
-	(
-		calibration_method
-	)* '/end MOD_PAR'
+	'/begin MOD_PAR' STRING 
+		'VERSION' STRING 
+		'ADDR_EPK' HEX 
+		'EPK' STRING
+		'CUSTOMER_NO' STRING 
+		'USER' STRING 
+		'PHONE_NO' STRING 
+		'ECU' STRING 
+		'CPU_TYPE' STRING
+		(memory_segment)*
+		(calibration_method)* 
+	'/end MOD_PAR'
 ;
 
 memory_segment
 :
 	'/begin MEMORY_SEGMENT' ID ID STRING ID ID ID HEX HEX INT INT INT INT INT
-	(
-		if_data
-	)* '/end MEMORY_SEGMENT'
+		(if_data)* 
+	'/end MEMORY_SEGMENT'
 ;
 
 if_data
 :
-	'/begin IF_DATA' ID HEX? CHAR* '/end IF_DATA'
+	'/begin IF_DATA' ID HEX? 
+		CHAR* 
+	'/end IF_DATA'
 ;
 
 calibration_method
 :
-	'/begin CALIBRATION_METHOD' STRING //name
-	INT // version
-	CHAR* '/end CALIBRATION_METHOD'
+	'/begin CALIBRATION_METHOD'
+		STRING //name
+		INT // version
+		CHAR* 
+	'/end CALIBRATION_METHOD'
 ;
 
 axis_pts
 :
 	'/begin AXIS_PTS' ID // name
-	STRING // description
-	HEX // address
+		STRING // description
+		HEX // address
 	'/end AXIS_PTS'
 ;
 
