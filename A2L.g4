@@ -61,9 +61,7 @@ module // one module is one ECU
 
 a2ml
 :
-	'/begin A2ML' 
-		CHAR* 
-	'/end A2ML'
+	aml
 ;
 
 mod_par // ECU parameter
@@ -122,6 +120,10 @@ include
 /*------------------------------------------------------------------
  * LEXER RULES
  *------------------------------------------------------------------*/
+ID_STR
+: '"'ID'"'
+;
+
 ID
 :
 	(
