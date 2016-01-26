@@ -2,6 +2,7 @@
  * Define a grammar called A2L
  */
 grammar A2L;
+import AML;
 
 @members {
     public static void main(String[] args) throws Exception {
