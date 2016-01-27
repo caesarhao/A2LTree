@@ -61,7 +61,9 @@ module // one module is one ECU
 
 a2ml
 :
-	aml
+	'/begin' 'A2ML'
+		aml
+	'/end' 'A2ML'
 ;
 
 mod_par // ECU parameter
