@@ -25,7 +25,9 @@
 //
 
 grammar AML;
+@header {
 
+}
 aml:
     (declaration)*
    ;
@@ -41,25 +43,23 @@ type_definition:
 
 type_name:
    TAG? (
-     name = predefined_type_name
-   | name = struct_type_name
-   | name = taggedstruct_type_name
-   | name = taggedunion_type_name
-   | name = enum_type_name
+      predefined_type_name
+   |  struct_type_name
+   |  taggedstruct_type_name
+   |  taggedunion_type_name
+   |  enum_type_name
    )
    ;
 
 predefined_type_name:
-   (
-     name = 'char'
-   | name = 'int'
-   | name = 'long'
-   | name = 'uchar'
-   | name = 'uint'
-   | name = 'ulong'
-   | name = 'double'
-   | name = 'float'
-   )
+     'char'
+   | 'int'
+   | 'long'
+   | 'uchar'
+   | 'uint'
+   | 'ulong'
+   | 'double'
+   | 'float'
    ;
 
 block_definition:
@@ -75,7 +75,7 @@ enumerator_list:
    ;
 
 enumerator:
-    TAG ('=' constant)?
+    TAG ('=' INT)?
    ;
 
 struct_type_name:
@@ -124,10 +124,10 @@ tagged_union_member:
    )
    ;
 
-constant returns [value]:
-     INT  {$value = int($INT.text)}
-   | HEX  {$value = int($HEX.text, 16)}
-   | FLOAT  {$value = float($FLOAT.text)}
+constant:
+     INT  
+   | HEX  
+   | FLOAT
    ;
 
 
@@ -137,7 +137,7 @@ constant returns [value]:
 ID  : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
     ;
 
-TAG:  '"' ID '"'  // s. 3.2
+TAG:  '"'ID'"'  // s. 3.2
    ;
 
 //KEYWORD:  '"' ID '"'
