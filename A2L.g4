@@ -106,6 +106,20 @@ calibration_method
 	'/end CALIBRATION_METHOD'
 ;
 
+measurement
+:
+	'/begin' 'MEASUREMENT'
+		ID // name
+		STRING // long name
+		DTYPE // type
+		ID // conversion method
+		INT // Resolution
+		INT // Accuracy
+		INT // MIN
+		INT // MAX
+		'ECU_ADDRESS' HEX // address
+	'/end' 'MEASUREMENT'
+;
 axis_pts
 :
 	'/begin AXIS_PTS' ID // name
