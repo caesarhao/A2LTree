@@ -27,9 +27,7 @@
 grammar AML;
 
 aml:
-   '/begin' 'A2ML'
-        (declaration)*
-   '/end' 'A2ML'
+    (declaration)*
    ;
 
 declaration:
