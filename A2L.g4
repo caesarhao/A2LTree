@@ -36,27 +36,28 @@ version
 project // one project presents one or more modules, one module is one ECU.
 
 :
-	'/begin PROJECT' ID STRING 
+	'/begin' 'PROJECT' ID STRING 
 		header 
 		module+ 
-	'/end PROJECT'
+	'/end' 'PROJECT'
 ;
 
 header
 :
-	'/begin HEADER' ID? STRING 
+	'/begin' 'HEADER' ID? STRING 
 		'VERSION' STRING 
 		'PROJECT_NO' ID 
-	'/end HEADER'
+	'/end' 'HEADER'
 ;
 
 module // one module is one ECU
 
 :
-	'/begin MODULE' ID? STRING
+	'/begin' 'MODULE' ID? STRING
 		(a2ml)? // a2ml part describes the communication protocols, it could be included by command include.
+		mod_common
 		mod_par 
-	'/end MODULE'
+	'/end' 'MODULE'
 ;
 
 a2ml
@@ -66,10 +67,22 @@ a2ml
 	'/end' 'A2ML'
 ;
 
+mod_common: // common parameters for the whole a2l file.
+	'/begin' 'MOD_COMMON' STRING
+		'DEPOSIT' ID
+      'BYTE_ORDER' ID
+      'ALIGNMENT_BYTE' INT
+      'ALIGNMENT_WORD' INT
+      'ALIGNMENT_LONG' INT
+      'ALIGNMENT_FLOAT32_IEEE' INT
+      'ALIGNMENT_FLOAT64_IEEE' INT
+	'/end' 'MOD_COMMON'
+;
+
 mod_par // ECU parameter
 
 :
-	'/begin MOD_PAR' STRING 
+	'/begin' 'MOD_PAR' STRING 
 		'VERSION' STRING 
 		'ADDR_EPK' HEX 
 		'EPK' STRING
@@ -80,30 +93,43 @@ mod_par // ECU parameter
 		'CPU_TYPE' STRING
 		(memory_segment)*
 		(calibration_method)* 
-	'/end MOD_PAR'
+	'/end' 'MOD_PAR'
 ;
 
 memory_segment
 :
-	'/begin MEMORY_SEGMENT' ID ID STRING ID ID ID HEX HEX INT INT INT INT INT
+	'/begin' 'MEMORY_SEGMENT' ID ID STRING ID ID ID HEX HEX INT INT INT INT INT
 		(if_data)* 
-	'/end MEMORY_SEGMENT'
+	'/end' 'MEMORY_SEGMENT'
 ;
 
 if_data
 :
-	'/begin IF_DATA' ID HEX? 
+	'/begin' 'IF_DATA' ID HEX? 
 		CHAR* 
-	'/end IF_DATA'
+	'/end' 'IF_DATA'
 ;
+
+compu_method:
+	'/begin' 'COMPU_METHOD'
+		ID // name
+		STRING // long name
+		(
+			('IDENTICAL' )
+			| ('LINEAR' )
+			| ('RAT_FUNC' )
+		) format ID_STR
+	'/end' 'COMPU_METHOD'
+;
+
 
 calibration_method
 :
-	'/begin CALIBRATION_METHOD'
+	'/begin' 'CALIBRATION_METHOD'
 		STRING //name
 		INT // version
 		CHAR* 
-	'/end CALIBRATION_METHOD'
+	'/end' 'CALIBRATION_METHOD'
 ;
 
 measurement
@@ -118,14 +144,15 @@ measurement
 		INT // MIN
 		INT // MAX
 		'ECU_ADDRESS' HEX // address
+		('FORMAT' format)? // format
 	'/end' 'MEASUREMENT'
 ;
 axis_pts
 :
-	'/begin AXIS_PTS' ID // name
+	'/begin' 'AXIS_PTS' ID // name
 		STRING // description
 		HEX // address
-	'/end AXIS_PTS'
+	'/end' 'AXIS_PTS'
 ;
 
 include
@@ -133,9 +160,26 @@ include
 	'/include' STRING // include an external file, normally an aml file.
 
 ;
+
+format:
+	'"%'INT'.'INT'"'
+;
 /*------------------------------------------------------------------
  * LEXER RULES
  *------------------------------------------------------------------*/
+DTYPE:
+	'UBYTE' // 8 bits
+	| 'SBYTE' // 8 bits
+	| 'UWORD' // 16 bits
+	| 'SWORD' // 16 bits
+	| 'ULONG' // 32 bits
+	| 'SLONG' // 32 bits
+	| 'A_UINT64' // 64 bits
+	| 'A_INT64' // 64 bits
+	| 'FLOAT32_IEEE' // 32 bits
+	| 'FLOAT64_IEEE' // 64 bits
+;
+
 ID_STR
 : '"'ID'"'
 ;

@@ -58,6 +58,26 @@ public interface A2LListener extends ParseTreeListener {
 	 */
 	void exitProject(@NotNull A2LParser.ProjectContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link A2LParser#compu_method}.
+	 * @param ctx the parse tree
+	 */
+	void enterCompu_method(@NotNull A2LParser.Compu_methodContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link A2LParser#compu_method}.
+	 * @param ctx the parse tree
+	 */
+	void exitCompu_method(@NotNull A2LParser.Compu_methodContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link A2LParser#measurement}.
+	 * @param ctx the parse tree
+	 */
+	void enterMeasurement(@NotNull A2LParser.MeasurementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link A2LParser#measurement}.
+	 * @param ctx the parse tree
+	 */
+	void exitMeasurement(@NotNull A2LParser.MeasurementContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link A2LParser#calibration_method}.
 	 * @param ctx the parse tree
 	 */
@@ -128,6 +148,16 @@ public interface A2LListener extends ParseTreeListener {
 	 */
 	void exitTaggedstruct_definition(@NotNull A2LParser.Taggedstruct_definitionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link A2LParser#mod_common}.
+	 * @param ctx the parse tree
+	 */
+	void enterMod_common(@NotNull A2LParser.Mod_commonContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link A2LParser#mod_common}.
+	 * @param ctx the parse tree
+	 */
+	void exitMod_common(@NotNull A2LParser.Mod_commonContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link A2LParser#block_definition}.
 	 * @param ctx the parse tree
 	 */
@@ -177,6 +207,16 @@ public interface A2LListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitModule(@NotNull A2LParser.ModuleContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link A2LParser#format}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormat(@NotNull A2LParser.FormatContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link A2LParser#format}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormat(@NotNull A2LParser.FormatContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link A2LParser#enumerator_list}.
 	 * @param ctx the parse tree

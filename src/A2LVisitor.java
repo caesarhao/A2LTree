@@ -41,6 +41,18 @@ public interface A2LVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProject(@NotNull A2LParser.ProjectContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link A2LParser#compu_method}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCompu_method(@NotNull A2LParser.Compu_methodContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link A2LParser#measurement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMeasurement(@NotNull A2LParser.MeasurementContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link A2LParser#calibration_method}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -83,6 +95,12 @@ public interface A2LVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitTaggedstruct_definition(@NotNull A2LParser.Taggedstruct_definitionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link A2LParser#mod_common}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMod_common(@NotNull A2LParser.Mod_commonContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link A2LParser#block_definition}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -112,6 +130,12 @@ public interface A2LVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitModule(@NotNull A2LParser.ModuleContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link A2LParser#format}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormat(@NotNull A2LParser.FormatContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link A2LParser#enumerator_list}.
 	 * @param ctx the parse tree

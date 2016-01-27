@@ -52,6 +52,20 @@ public class A2LBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements A2
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitCompu_method(@NotNull A2LParser.Compu_methodContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitMeasurement(@NotNull A2LParser.MeasurementContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitCalibration_method(@NotNull A2LParser.Calibration_methodContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -101,6 +115,13 @@ public class A2LBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements A2
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitMod_common(@NotNull A2LParser.Mod_commonContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitBlock_definition(@NotNull A2LParser.Block_definitionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -130,6 +151,13 @@ public class A2LBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements A2
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitModule(@NotNull A2LParser.ModuleContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitFormat(@NotNull A2LParser.FormatContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

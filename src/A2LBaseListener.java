@@ -76,6 +76,30 @@ public class A2LBaseListener implements A2LListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterCompu_method(@NotNull A2LParser.Compu_methodContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCompu_method(@NotNull A2LParser.Compu_methodContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMeasurement(@NotNull A2LParser.MeasurementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMeasurement(@NotNull A2LParser.MeasurementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCalibration_method(@NotNull A2LParser.Calibration_methodContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -160,6 +184,18 @@ public class A2LBaseListener implements A2LListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterMod_common(@NotNull A2LParser.Mod_commonContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMod_common(@NotNull A2LParser.Mod_commonContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterBlock_definition(@NotNull A2LParser.Block_definitionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -215,6 +251,18 @@ public class A2LBaseListener implements A2LListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitModule(@NotNull A2LParser.ModuleContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFormat(@NotNull A2LParser.FormatContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFormat(@NotNull A2LParser.FormatContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
